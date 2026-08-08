@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIニケちゃんサーバー 1周年（仮ページ）</title>
+<meta name="description" content="生成AIの1年と、ぼくらの1年。ファンメイドの1周年お祝いページ（フォーマット確認用の仮ページ）">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===========================================================
+   ニケ鯖 1周年 LP — 仮ページ（フォーマット確認用モック）
+   単一HTML自己完結 / 外部リソース読み込み一切なし
+   配色 = 白ベース + アクセント1色（ペリウィンクル系）
+   =========================================================== */
+
+:root{
+  --bg:        #fbfaff;
+  --bg-soft:   #f2f1fb;
+  --surface:   #ffffff;
+  --ink:       #1e1c2b;
+  --ink-mid:   #4a4761;
+  --ink-soft:  #6f6b8a;
+  --line:      #e3e0f2;
+
+  /* アクセント1色とそのトーン展開 */
+  --accent:      #5b63e6;
+  --accent-deep: #3f45b8;
+  --accent-soft: #e9eafc;
+  --accent-mist: #f4f4fe;
+
+  --radius:  16px;
+  --radius-s: 10px;
+  --shadow:   0 1px 2px rgba(30,28,43,.05), 0 8px 24px rgba(59,60,140,.07);
+  --shadow-s: 0 1px 2px rgba(30,28,43,.05), 0 3px 10px rgba(59,60,140,.06);
+
+  --font: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN",
+          "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic",
+          Meiryo, sans-serif;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:        #14131c;
+    --bg-soft:   #1b1a26;
+    --surface:   #1f1e2b;
+    --ink:       #f0eefb;
+    --ink-mid:   #c4c0da;
+    --ink-soft:  #9793b4;
+    --line:      #34324a;
+    --accent:      #949aff;
+    --accent-deep: #b9bcff;
+    --accent-soft: #2a2a46;
+    --accent-mist: #222132;
+    --shadow:   0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.3);
+    --shadow-s: 0 1px 2px rgba(0,0,0,.3), 0 3px 10px rgba(0,0,0,.25);
+  }
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+  letter-spacing:.01em;
+  overflow-x:hidden;           /* 保険：横スクロール封じ */
+}
+
+img,svg{ max-width:100%; height:auto; }
+
+.wrap{
+  width:100%;
+  max-width:1080px;
+  margin-inline:auto;
+  padding-inline:clamp(16px, 5vw, 40px);
+}
+
+.section{ padding-block:clamp(48px, 9vw, 88px); }
+
+.eyebrow{
+  display:inline-block;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--accent);
+  background:var(--accent-soft);
+  border-radius:999px;
+  padding:5px 14px;
+  margin:0 0 14px;
+}
+
+h2.sec-title{
+  font-size:clamp(1.35rem, 4.6vw, 2rem);
+  line-height:1.4;
+  margin:0 0 10px;
+  letter-spacing:.01em;
+}
+.sec-lead{
+  margin:0 auto 34px;
+  color:var(--ink-soft);
+  font-size:.92rem;
+  max-width:44em;
+}
+.center{ text-align:center; }
+
+/* ---------- 仮ページ告知バー ---------- */
+.mockbar{
+  background:var(--accent-deep);
+  color:#fff;
+  font-size:.78rem;
+  line-height:1.6;
+  text-align:center;
+  padding:9px 16px;
+  letter-spacing:.02em;
+}
+.mockbar b{ font-weight:700; }
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding-block:clamp(56px, 13vw, 108px);
+  background:
+    radial-gradient(120% 90% at 50% -20%, var(--accent-soft) 0%, transparent 62%),
+    linear-gradient(180deg, var(--accent-mist) 0%, var(--bg) 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{ position:relative; z-index:2; }
+
+.anniv{
+  display:flex;                 /* block化：eyebrow と同じ行に流れないように */
+  justify-content:center;
+  align-items:baseline;
+  gap:.35em;
+  font-weight:800;
+  color:var(--accent);
+  line-height:1;
+  margin-bottom:18px;
+}
+.anniv .num{
+  font-size:clamp(3.4rem, 17vw, 6.4rem);
+  letter-spacing:-.02em;
+}
+.anniv .unit{ font-size:clamp(1rem, 4.4vw, 1.6rem); font-weight:700; }
+
+.hero h1{
+  font-size:clamp(1.45rem, 5.6vw, 2.6rem);
+  line-height:1.35;
+  margin:0 0 14px;
+  letter-spacing:.01em;
+}
+.hero .sub{
+  font-size:clamp(.95rem, 3.4vw, 1.15rem);
+  color:var(--ink-mid);
+  margin:0 0 26px;
+  font-weight:500;
+}
+.period{
+  display:inline-block;
+  font-size:.82rem;
+  color:var(--ink-soft);
+  border:1px solid var(--line);
+  background:var(--surface);
+  border-radius:999px;
+  padding:7px 18px;
+  letter-spacing:.06em;
+  box-shadow:var(--shadow-s);
+}
+.hero .scroll-hint{
+  margin:30px 0 0;
+  font-size:.76rem;
+  color:var(--ink-soft);
+  letter-spacing:.08em;
+}
+
+/* ---------- 紙吹雪（CSSのみ・控えめ） ---------- */
+.confetti{
+  position:absolute; inset:0;
+  pointer-events:none;
+  z-index:1;
+  overflow:hidden;
+}
+.confetti i{
+  position:absolute;
+  top:-6%;
+  width:7px; height:11px;
+  border-radius:2px;
+  opacity:.5;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%   { transform:translate3d(0,-10vh,0) rotate(0deg); }
+  100% { transform:translate3d(14px,115vh,0) rotate(320deg); }
+}
+.confetti i:nth-child(1){ left:6%;  background:var(--accent);      animation-duration:15s; animation-delay:-1s; }
+.confetti i:nth-child(2){ left:17%; background:#f2c14e;            animation-duration:19s; animation-delay:-6s; width:6px; height:6px; border-radius:50%; }
+.confetti i:nth-child(3){ left:29%; background:var(--accent-deep); animation-duration:17s; animation-delay:-11s; }
+.confetti i:nth-child(4){ left:41%; background:#ef9aa8;            animation-duration:21s; animation-delay:-3s; }
+.confetti i:nth-child(5){ left:54%; background:var(--accent);      animation-duration:16s; animation-delay:-8s; width:6px; height:6px; border-radius:50%; }
+.confetti i:nth-child(6){ left:66%; background:#f2c14e;            animation-duration:20s; animation-delay:-14s; }
+.confetti i:nth-child(7){ left:78%; background:var(--accent-deep); animation-duration:18s; animation-delay:-5s; }
+.confetti i:nth-child(8){ left:89%; background:#ef9aa8;            animation-duration:22s; animation-delay:-9s; width:6px; height:6px; border-radius:50%; }
+.confetti i:nth-child(9){ left:35%; background:var(--accent);      animation-duration:24s; animation-delay:-17s; }
+.confetti i:nth-child(10){left:71%; background:var(--accent);      animation-duration:23s; animation-delay:-13s; width:6px; height:6px; border-radius:50%; }
+
+@media (prefers-reduced-motion: reduce){
+  .confetti i{ animation:none; opacity:.32; top:auto; bottom:auto; }
+  .confetti{ display:none; }
+}
+
+/* ---------- 凡例 ---------- */
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin:0 0 36px;
+}
+.legend span{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--ink-mid);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 14px;
+  box-shadow:var(--shadow-s);
+}
+.legend .k{ font-size:1rem; line-height:1; }
+
+/* ===========================================================
+   年表（モバイル = 1カラム / 768px以上 = 中央スパイン左右対比）
+   =========================================================== */
+.tl{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  padding-left:30px;            /* モバイル：左寄せスパインぶん */
+}
+/* スパイン */
+.tl::before{
+  content:"";
+  position:absolute;
+  top:6px; bottom:6px;
+  left:7px;
+  width:2px;
+  border-radius:2px;
+  background:linear-gradient(180deg, transparent, var(--line) 8%, var(--line) 92%, transparent);
+}
+
+.entry{ position:relative; }
+
+/* スパイン上のドット */
+.entry::before{
+  content:"";
+  position:absolute;
+  top:22px;
+  left:-27px;
+  width:10px; height:10px;
+  border-radius:50%;
+  background:var(--surface);
+  border:2px solid var(--accent);
+  box-shadow:0 0 0 3px var(--bg);
+  z-index:2;
+}
+.entry.home::before{ border-color:#e0a13c; }
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px 18px 16px;
+  box-shadow:var(--shadow-s);
+}
+.card .date{
+  display:block;
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.entry.home .card .date{ color:#c07f1e; }
+.card h3{
+  font-size:1rem;
+  line-height:1.55;
+  margin:0 0 7px;
+  font-weight:700;
+}
+.card p{
+  margin:0;
+  font-size:.86rem;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  border-radius:999px;
+  padding:3px 10px;
+  margin-bottom:9px;
+  border:1px solid transparent;
+}
+.entry.world .badge{ background:var(--accent-soft); color:var(--accent-deep); }
+.entry.home  .badge{ background:#fbf0da; color:#8f5f11; }
+
+@media (prefers-color-scheme: dark){
+  .entry.home  .badge{ background:#3a2f18; color:#f0c880; }
+  .entry.home .card .date{ color:#e6b45f; }
+}
+
+/* プレースホルダー（サーバー側ダミー枠） */
+.card.placeholder{
+  background:
+    repeating-linear-gradient(135deg, transparent 0 9px, var(--accent-mist) 9px 18px),
+    var(--surface);
+  border-style:dashed;
+  border-color:var(--line);
+  box-shadow:none;
+}
+.card.placeholder h3{ color:var(--ink-mid); font-weight:600; }
+
+/* ---- 768px以上：左右対比レイアウト ---- */
+@media (min-width:768px){
+  .tl{
+    grid-template-columns:1fr 1fr;
+    column-gap:clamp(40px, 8vw, 88px);
+    row-gap:22px;
+    padding-left:0;
+  }
+  .tl::before{ left:50%; transform:translateX(-50%); }
+
+  .entry.world{ grid-column:1; text-align:right; }
+  .entry.home { grid-column:2; text-align:left; }
+
+  /* 1エントリ = 1行（時系列で左右交互に降ろす） */
+  .entry:nth-child(1){ grid-row:1; }
+  .entry:nth-child(2){ grid-row:2; }
+  .entry:nth-child(3){ grid-row:3; }
+  .entry:nth-child(4){ grid-row:4; }
+  .entry:nth-child(5){ grid-row:5; }
+  .entry:nth-child(6){ grid-row:6; }
+  .entry:nth-child(7){ grid-row:7; }
+  .entry:nth-child(8){ grid-row:8; }
+  .entry:nth-child(9){ grid-row:9; }
+  .entry:nth-child(10){ grid-row:10; }
+  .entry:nth-child(11){ grid-row:11; }
+  .entry:nth-child(12){ grid-row:12; }
+
+  /* ドットをスパイン上へ */
+  .entry.world::before{ left:auto; right:calc(-1 * (clamp(40px, 8vw, 88px) / 2) - 5px); }
+  .entry.home::before { left:calc(-1 * (clamp(40px, 8vw, 88px) / 2) - 5px); right:auto; }
+
+  /* カード → スパインの引き出し線 */
+  .entry::after{
+    content:"";
+    position:absolute;
+    top:27px;
+    height:1px;
+    background:var(--line);
+    width:calc(clamp(40px, 8vw, 88px) / 2 - 6px);
+  }
+  .entry.world::after{ right:calc(-1 * (clamp(40px, 8vw, 88px) / 2)); }
+  .entry.home::after { left:calc(-1 * (clamp(40px, 8vw, 88px) / 2)); }
+
+  .card{ padding:20px 22px 18px; }
+  .card h3{ font-size:1.03rem; }
+}
+
+/* ===========================================================
+   数字で見る1年
+   =========================================================== */
+.stats-sec{ background:var(--bg-soft); border-block:1px solid var(--line); }
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(min(140px, 100%), 1fr));  /* モバイル=2列 */
+  gap:14px;
+}
+@media (min-width:768px){
+  .stats{ grid-template-columns:repeat(3, 1fr); }   /* 6枚 = 3×2 で割り切る */
+}
+.stat{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px 16px;
+  text-align:center;
+  box-shadow:var(--shadow-s);
+}
+.stat .icon{ font-size:1.4rem; line-height:1; display:block; margin-bottom:8px; }
+.stat .val{
+  display:block;
+  font-size:clamp(1.6rem, 6vw, 2.1rem);
+  font-weight:800;
+  color:var(--accent);
+  letter-spacing:.02em;
+  line-height:1.2;
+}
+.stat .val small{ font-size:.5em; font-weight:700; margin-left:.25em; color:var(--ink-mid); }
+.stat .label{
+  display:block;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  margin-top:6px;
+  font-weight:600;
+}
+.stats-note{
+  margin:20px 0 0;
+  text-align:center;
+  font-size:.75rem;
+  color:var(--ink-soft);
+}
+
+/* ===========================================================
+   イベント告知枠
+   =========================================================== */
+.event{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  border-radius:calc(var(--radius) + 6px);
+  border:1px solid var(--line);
+  background:
+    radial-gradient(110% 130% at 50% 0%, var(--accent-soft) 0%, transparent 70%),
+    var(--surface);
+  padding:clamp(30px, 7vw, 52px) clamp(18px, 5vw, 44px);
+  box-shadow:var(--shadow);
+}
+.event .tagline{
+  font-size:.74rem;
+  letter-spacing:.22em;
+  font-weight:800;
+  color:var(--accent);
+  margin:0 0 12px;
+}
+.event h2{
+  font-size:clamp(1.3rem, 5.4vw, 2.1rem);
+  margin:0 0 6px;
+  line-height:1.35;
+}
+.event .kari{ font-size:.6em; color:var(--ink-soft); font-weight:600; }
+.event .coming{
+  display:inline-block;
+  margin:16px 0 12px;
+  font-size:clamp(1.1rem, 4.6vw, 1.5rem);
+  font-weight:800;
+  letter-spacing:.14em;
+  color:var(--accent-deep);
+  border:2px dashed var(--accent);
+  border-radius:999px;
+  padding:8px 22px;
+}
+.event p.note{
+  margin:6px auto 0;
+  max-width:34em;
+  font-size:.85rem;
+  color:var(--ink-soft);
+}
+
+/* ===========================================================
+   Footer
+   =========================================================== */
+footer{
+  background:var(--bg-soft);
+  border-top:1px solid var(--line);
+  padding-block:clamp(32px, 7vw, 52px);
+  text-align:center;
+}
+.fanmade{
+  display:inline-block;
+  font-weight:800;
+  font-size:.95rem;
+  color:var(--ink);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-s);
+  padding:12px 20px;
+  margin-bottom:16px;
+  box-shadow:var(--shadow-s);
+}
+footer .disclaimer{
+  margin:0 auto 18px;
+  max-width:38em;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  line-height:1.8;
+}
+.credit{
+  display:inline-block;
+  text-align:left;
+  font-size:.76rem;
+  color:var(--ink-soft);
+  border:1px dashed var(--line);
+  border-radius:var(--radius-s);
+  padding:12px 18px;
+  background:var(--surface);
+}
+.credit dt{ font-weight:700; color:var(--ink-mid); font-size:.72rem; letter-spacing:.08em; }
+.credit dd{ margin:2px 0 8px; }
+.credit dd:last-child{ margin-bottom:0; }
+.copyline{
+  margin:20px 0 0;
+  font-size:.7rem;
+  color:var(--ink-soft);
+  letter-spacing:.06em;
+}
+</style>
+</head>
+<body>
+
+<div class="mockbar">
+  <b>これはフォーマット確認用の仮ページです。</b>　日付・数値・サーバー側の内容はすべて仮置き（プレースホルダー）です。
+</div>
+
+<!-- ========================= Hero ========================= -->
+<header class="hero">
+  <div class="confetti" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">ANNIVERSARY</p>
+    <div class="anniv"><span class="num">1</span><span class="unit">周年</span></div>
+    <h1>AIニケちゃんサーバー、<br>1周年おめでとうございます。</h1>
+    <p class="sub">生成AIの1年と、ぼくらの1年。</p>
+    <p class="period">20XX.XX &mdash; 20XX.XX（仮）</p>
+    <p class="scroll-hint">↓ 左に世界、右にこの場所</p>
+  </div>
+</header>
+
+<!-- ========================= 左右年表 ========================= -->
+<main>
+<section class="section">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">TIMELINE</p>
+      <h2 class="sec-title">あの技術が出たとき、<br>ここでは何が起きていたか</h2>
+      <p class="sec-lead">
+        左は世界の生成AIに起きたこと、右はこのサーバーに起きたこと。
+        同じ1年を、2本の線で並べています。
+      </p>
+      <div class="legend">
+        <span><span class="k">🌍</span>世界の生成AI</span>
+        <span><span class="k">🏠</span>ニケちゃんサーバー</span>
+      </div>
+    </div>
+
+    <!-- 年表はここに data/timeline.json から描画される（2026-08-08 ハードコード→JSON駆動へ）
+         ★このブロックを手で編集しないこと。中身の正本は public/data/timeline.json -->
+    <div class="tl" id="tl" data-empty="1">
+      <p class="tl-loading">年表を読み込んでいます…</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 数字で見る1年 ========================= -->
+<section class="section stats-sec">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">BY THE NUMBERS</p>
+      <h2 class="sec-title">数字で見る1年</h2>
+      <p class="sec-lead">数えられるものだけが1年ではないけれど、数えられるものは数えておきたい。</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="icon" aria-hidden="true">💬</span>
+        <span class="val">---<small>件</small></span>
+        <span class="label">投稿されたメッセージ</span>
+      </div>
+      <div class="stat">
+        <span class="icon" aria-hidden="true">🖼️</span>
+        <span class="val">---<small>枚</small></span>
+        <span class="label">生成された画像</span>
+      </div>
+      <div class="stat">
+        <span class="icon" aria-hidden="true">🧑‍🤝‍🧑</span>
+        <span class="val">---<small>人</small></span>
+        <span class="label">集まったメンバー</span>
+      </div>
+      <div class="stat">
+        <span class="icon" aria-hidden="true">🧵</span>
+        <span class="val">---<small>本</small></span>
+        <span class="label">立ったスレッド</span>
+      </div>
+      <div class="stat">
+        <span class="icon" aria-hidden="true">✨</span>
+        <span class="val">---<small>個</small></span>
+        <span class="label">押されたリアクション</span>
+      </div>
+      <div class="stat">
+        <span class="icon" aria-hidden="true">🎉</span>
+        <span class="val">---<small>回</small></span>
+        <span class="label">開かれた企画・イベント</span>
+      </div>
+    </div>
+
+    <p class="stats-note">※ 数値はすべてプレースホルダーです。集計方法が決まってから差し替えます。</p>
+  </div>
+</section>
+
+<!-- ========================= イベント告知枠 ========================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="event">
+      <p class="tagline">1ST ANNIVERSARY EVENT</p>
+      <h2>ニケフェスティバル <span class="kari">（仮）</span></h2>
+      <p class="coming">COMING SOON</p>
+      <p class="note">
+        1周年をお祝いする企画を準備中です。日程・内容が決まりしだい、この枠が埋まります。
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ========================= Footer ========================= -->
+<footer>
+  <div class="wrap">
+    <p class="fanmade">🎈 このページはファンメイドです（勝手に作りました）</p>
+    <p class="disclaimer">
+      公式が発表したものではありません。運営・関係者とは無関係の、いち参加者による非公式のお祝いページです。
+      掲載されている年月・数値・出来事は現時点ですべて仮置きで、事実確認のうえ差し替える予定です。
+      問題があればすぐ取り下げます。
+    </p>
+    <dl class="credit">
+      <dt>制作</dt>
+      <dd>（クレジット欄・仮）</dd>
+      <dt>年表監修</dt>
+      <dd>（一次情報の裏取り後に記載・仮）</dd>
+      <dt>ページ種別</dt>
+      <dd>フォーマット確認用モック / 未公開</dd>
+    </dl>
+    <p class="copyline">Made with 🎂 &mdash; unofficial fan page</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   年表レンダラ（2026-08-08 新設）
+   ハードコードされていた12枚のカードを data/timeline.json 駆動へ置き換えた。
+   ★これが無いと「みんなで更新」に切り替えられないので、中身より先に器を作った。
+
+   🔴 いちばん大事な規約:
+     status が 'confirmed' 以外（= draft）の行は **日付を出さない**。
+     代わりに「20XX.XX（仮）」と出し、カードに placeholder クラスを付ける。
+     ——「裏取り前の実在っぽい日付を混ぜない」を、人の注意力ではなく分岐で守るため。
+   ===================================================================== */
+(async function () {
+  var el = document.getElementById('tl');
+  if (!el) return;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* 日付の見せ方。confirmed のときだけ実日付を出す */
+  function dateLabel(e) {
+    if (e.status !== 'confirmed' || !e.date) return '20XX.XX（仮）';
+    var p = e.date.split('-');
+    return e.date_precision === 'day' && p.length >= 3
+      ? p[0] + '.' + p[1] + '.' + p[2]
+      : p[0] + '.' + p[1];
+  }
+
+  function card(e) {
+    var isHome = e.side === 'home';
+    var badge = isHome ? '🏠 ' + (e.category || 'サーバー') : '🌍 ' + (e.category || '');
+    var provisional = (e.status !== 'confirmed' || !e.date);
+    var cls = 'card' + (provisional ? ' placeholder' : '') + (e.highlight ? ' highlight' : '');
+    var dl = esc(dateLabel(e));
+    /* 出典があれば日付をリンクにする＝主張の射程が読者に見える */
+    var dateHtml = (!provisional && e.source_url)
+      ? '<a class="date" href="' + esc(e.source_url) + '" target="_blank" rel="noopener">' + dl + '</a>'
+      : '<span class="date">' + dl + '</span>';
+    var aliasHtml = '';
+    if (e.alias && e.alias.length > 1) {
+      aliasHtml = '<p class="alias">別名: ' + e.alias.map(esc).join(' / ') + '</p>';
+    }
+    return '<article class="entry ' + (isHome ? 'home' : 'world') + '">'
+      + '<div class="' + cls + '">'
+      + '<span class="badge">' + esc(badge) + '</span>'
+      + dateHtml
+      + '<h3>' + esc(e.title) + '</h3>'
+      + '<p>' + esc(e.body) + '</p>'
+      + aliasHtml
+      + '</div></article>';
+  }
+
+  try {
+    var res = await fetch('./data/timeline.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    var data = await res.json();
+    var all = (data.entries || []);
+
+    /* 窓の中だけを本編に出す。窓外(in_window:false)は前史なので今は出さない
+       （捨てずにJSONに残してあるので、あとから「前史」節を足せる） */
+    var entries = all.filter(function (e) { return e.in_window !== false; });
+
+    /* 日付順。日付なし(draft)は末尾へ */
+    entries.sort(function (a, b) {
+      var ad = a.date || '9999', bd = b.date || '9999';
+      return ad < bd ? -1 : ad > bd ? 1 : 0;
+    });
+
+    if (!entries.length) {
+      el.innerHTML = '<p class="tl-loading">年表のデータがまだありません。</p>';
+      return;
+    }
+    el.removeAttribute('data-empty');
+    el.innerHTML = entries.map(card).join('\n');
+
+    /* 件数の内訳を凡例の下に出す（★何件が仮なのかを隠さない） */
+    var conf = entries.filter(function (e) { return e.status === 'confirmed' && e.date; }).length;
+    var prov = entries.length - conf;
+    var world = entries.filter(function (e) { return e.side !== 'home'; }).length;
+    var home = entries.length - world;
+    var meta = document.createElement('p');
+    meta.className = 'tl-meta';
+    meta.innerHTML = '掲載 ' + entries.length + ' 件（🌍 ' + world + ' / 🏠 ' + home + '）'
+      + '　日付確定 ' + conf + ' 件'
+      + (prov ? '　裏取り中 ' + prov + ' 件' : '')
+      + (all.length > entries.length ? '　＋前史 ' + (all.length - entries.length) + ' 件は非表示' : '');
+    var legend = document.querySelector('.legend');
+    if (legend && legend.parentNode) legend.parentNode.insertBefore(meta, legend.nextSibling);
+  } catch (err) {
+    el.innerHTML = '<p class="tl-loading">年表を読み込めませんでした（' + esc(err.message) + '）</p>';
+  }
+})();
+</script>
+<style>
+  /* 年表レンダラ用の追加スタイル（2026-08-08） */
+  .tl-loading { text-align: center; opacity: .6; padding: 2rem 0; }
+  .tl-meta { text-align: center; font-size: .8rem; opacity: .65; margin-top: .6rem; letter-spacing: .02em; }
+  .card .alias { font-size: .72rem; opacity: .5; margin-top: .5rem; }
+  .card a.date { text-decoration: none; border-bottom: 1px dotted currentColor; }
+  .card a.date:hover { opacity: .8; }
+  .card.highlight { box-shadow: 0 0 0 1px rgba(255, 209, 102, .5); }
+</style>
+</body>
+</html>
