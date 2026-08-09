@@ -1,6 +1,6 @@
 {
  "version": "0.1.0",
- "generated_at": "2026-08-09T16:00:00+09:00",
+ "generated_at": "2026-08-09T16:10:00+09:00",
  "note": "ニケフェス1周年年表の表示用データ。world=世界の生成AI / home=ニケちゃんサーバー。world側はCodexリサーチ＋ネクタリカ検収（出典は全件開発元の公式）。status=draft の行はLP側で日付を出さず「20XX.XX（仮）」表示にする規約。窓=2025-08〜2026-09（サーバー開設2025-08-23〜ニケフェス開催月）。in_window:false は前史。 ★home側は現時点ゼロ件（案内カード1枚のみ）。出来事を捏造して埋めない。",
  "window": {
   "from": "2025-08",
@@ -74,7 +74,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": false,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "world-2025-05-imagen-4",
@@ -210,7 +211,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "home-2025-08-server-opened",
@@ -300,7 +302,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "world-2025-09-luma-ray3",
@@ -439,7 +442,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "home-2025-10-rollup",
@@ -508,7 +512,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "home-2025-10-sora-cameo-movie-generator",
@@ -705,7 +710,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "world-2025-12-runway-gen-4-5",
@@ -739,7 +745,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "home-2025-12-video-aituber-soul",
@@ -1132,7 +1139,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "world-2026-03-midjourney-v8-alpha",
@@ -1258,7 +1266,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "home-2026-05-rollup",
@@ -1310,7 +1319,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "world-2026-06-claude-fable-5-mythos-5",
@@ -1518,7 +1528,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "world-2026-07-minimax-h3",
@@ -1621,7 +1632,8 @@
    "verified_by": "codex",
    "status": "confirmed",
    "in_window": true,
-   "highlight": false
+   "highlight": false,
+   "oss": true
   },
   {
    "id": "home-2026-08-rollup",
@@ -1777,6 +1789,150 @@
    "status": "confirmed",
    "in_window": true,
    "highlight": false
+  },
+  {
+   "id": "world-2025-07-kimi-k2",
+   "side": "world",
+   "category": "LLM",
+   "date": "2025-07-11",
+   "date_precision": "day",
+   "title": "Moonshot Kimi K2 公開",
+   "body": "1兆パラメータ規模のMoEをオープンウェイトで出した中国勢の代表格。ここからオープンモデルの主役争いが激しくなる。",
+   "alias": [],
+   "source_url": "https://en.wikipedia.org/wiki/Moonshot_AI",
+   "source_name": "Wikipedia（Moonshot AI）",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": false,
+   "highlight": false,
+   "oss": true
+  },
+  {
+   "id": "world-2025-07-glm-4-5",
+   "side": "world",
+   "category": "LLM",
+   "date": "2025-07-28",
+   "date_precision": "day",
+   "title": "Zhipu GLM-4.5 公開",
+   "body": "355BのMoEをオープンソースで公開。推論・コード・エージェントの三本柱を掲げた。",
+   "alias": [],
+   "source_url": "https://www.infoq.com/news/2025/08/glm-4-5/",
+   "source_name": "InfoQ",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": false,
+   "highlight": false,
+   "oss": true
+  },
+  {
+   "id": "world-2025-09-glm-4-6",
+   "side": "world",
+   "category": "LLM",
+   "date": "2025-09-01",
+   "date_precision": "month",
+   "title": "Zhipu GLM-4.6 公開",
+   "body": "4.5の改良版。コーディングと長文脈を強化してオープン路線を継続した。",
+   "alias": [],
+   "source_url": "https://baike.baidu.com/en/item/GLM-4.6/1428092",
+   "source_name": "Baidu百科",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": true,
+   "highlight": false,
+   "oss": true
+  },
+  {
+   "id": "world-2026-01-kimi-k2-5",
+   "side": "world",
+   "category": "LLM",
+   "date": "2026-01-27",
+   "date_precision": "day",
+   "title": "Moonshot Kimi K2.5 公開",
+   "body": "1Tパラメータのネイティブマルチモーダル版。オープンウェイト路線を維持した。",
+   "alias": [],
+   "source_url": "https://comfyui-wiki.com/en/news/2026-01-27-moonshot-ai-kimi-k2-5-release",
+   "source_name": "ComfyUI Wiki",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": true,
+   "highlight": false,
+   "oss": true
+  },
+  {
+   "id": "world-2026-04-gemma-4",
+   "side": "world",
+   "category": "LLM",
+   "date": "2026-04-01",
+   "date_precision": "month",
+   "title": "Google Gemma 4 公開",
+   "body": "Apache 2.0の軽量オープンモデル新世代。ローカル運用勢の定番が更新された。",
+   "alias": [],
+   "source_url": "https://www.promptquorum.com/local-llms/local-llm-model-updates-2026",
+   "source_name": "Prompt Quorum",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": true,
+   "highlight": false,
+   "oss": true
+  },
+  {
+   "id": "world-2026-04-deepseek-v4-pro",
+   "side": "world",
+   "category": "LLM",
+   "date": "2026-04-24",
+   "date_precision": "day",
+   "title": "DeepSeek-V4 Pro プレビュー公開",
+   "body": "1.6Tパラメータ・100万トークン文脈・MITライセンス。オープン最大級として登場した。",
+   "alias": [],
+   "source_url": "https://codersera.com/blog/deepseek-v4-complete-guide-2026/",
+   "source_name": "Codersera",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": true,
+   "highlight": false,
+   "oss": true
+  },
+  {
+   "id": "world-2026-06-glm-5-2",
+   "side": "world",
+   "category": "LLM",
+   "date": "2026-06-13",
+   "date_precision": "day",
+   "title": "Zhipu GLM-5.2 公開",
+   "body": "オープンウェイト勢の上位争いに食い込んだ主力版。数日後に重みも公開された。",
+   "alias": [],
+   "source_url": "https://fazm.ai/t/latest-open-source-llm-releases-2026",
+   "source_name": "fazm.ai リリース一覧",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": true,
+   "highlight": false,
+   "oss": true
+  },
+  {
+   "id": "world-2026-07-kimi-k3",
+   "side": "world",
+   "category": "LLM",
+   "date": "2026-07-16",
+   "date_precision": "day",
+   "title": "Moonshot Kimi K3 公開",
+   "body": "オープンウェイトの最高峰スコアに到達し、フロンティア級に肉薄したと報じられた。重みは7月27日に公開。",
+   "alias": [],
+   "source_url": "https://fortune.com/2026/07/16/moonshots-kimi-k3-pushes-chinese-ai-into-fable-level-territory/",
+   "source_name": "Fortune",
+   "verified_at": "2026-08-09",
+   "verified_by": "nectalica",
+   "status": "confirmed",
+   "in_window": true,
+   "highlight": false,
+   "oss": true
   }
  ]
 }

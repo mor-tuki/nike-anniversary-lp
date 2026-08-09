@@ -760,8 +760,11 @@ footer .disclaimer{
        ================================================================= */
     /* showAtLaunch: 開設日より前の「開設時点の技術」を出すか。
        ★既定は false ＝ 1年の年表がサーバー開設から始まる（2026-08-08 ツキ指示）。
-         見たいときだけボタンで開く。 */
-    var state = { cats: null, month: null, showAtLaunch: false };   // null = 絞らない
+         見たいときだけボタンで開く。
+       showOss: OSS系モデル（oss:true）を出すか。
+       ★既定は false ＝ 初期表示はフロンティア中心で読みやすく、
+         「ニケ鯖メンバーはOSSめっちゃ使う」ので開けばすぐ見える（2026-08-09 ツキ指示）。 */
+    var state = { cats: null, month: null, showAtLaunch: false, showOss: false };   // null = 絞らない
 
     var catCounts = {};
     entries.forEach(function (e) {
@@ -794,11 +797,16 @@ footer .disclaimer{
     });
     var noDate = entries.filter(function (e) { return !e.date; }).length;
     var atLaunchCount = entries.filter(function (e) { return e._atLaunch; }).length;
+    /* OSS系＝oss:true。★開設前トグルに属するもの（Kimi K2等）はそちらを正とし二重籍にしない */
+    entries.forEach(function (e) { e._oss = !!e.oss && !e._atLaunch; });
+    var ossCount = entries.filter(function (e) { return e._oss; }).length;
 
     function visible() {
       return entries.filter(function (e) {
         /* ★開設時点は既定で隠す。これで先頭が自然にサーバー開設カードになる */
         if (e._atLaunch && !state.showAtLaunch) return false;
+        /* ★OSS系も既定で閉じる（開けばすぐ見える・2026-08-09 ツキ指示） */
+        if (e._oss && !state.showOss) return false;
         if (state.cats && state.cats.indexOf(e.category) < 0) return false;
         if (state.month) {
           if (state.month === '__nodate__') return !e.date;
@@ -832,6 +840,11 @@ footer .disclaimer{
               ? (state.showAtLaunch
                   ? '　開設前のできごと ' + atLaunchCount + ' 件を表示中'
                   : '　＋開設前のできごと ' + atLaunchCount + ' 件は閉じています')
+              : '')
+          + (ossCount
+              ? (state.showOss
+                  ? '　OSSモデル ' + ossCount + ' 件を表示中'
+                  : '　＋OSSモデル ' + ossCount + ' 件は閉じています')
               : '');
       }
       /* ボタンの選択状態を塗り直す */
@@ -850,6 +863,13 @@ footer .disclaimer{
         tgBtn.classList.toggle('on', state.showAtLaunch);
         var tg = tgBtn.querySelector('.tg');
         if (tg) tg.textContent = state.showAtLaunch ? '−' : '＋';
+      }
+      /* OSSトグルも同じ作法 */
+      var ossBtn = document.querySelector('[data-toggle="oss"]');
+      if (ossBtn) {
+        ossBtn.classList.toggle('on', state.showOss);
+        var tg2 = ossBtn.querySelector('.tg');
+        if (tg2) tg2.textContent = state.showOss ? '−' : '＋';
       }
     }
 
@@ -887,6 +907,13 @@ footer .disclaimer{
       h += '<button class="chip atlaunch-toggle" data-toggle="atlaunch"'
         + ' title="サーバーが開く前のこと。世界にすでにあった道具と、タグができた日">'
         + '<span class="tg">＋</span> 開設前のできごと <b>' + atLaunchCount + '</b></button>';
+    }
+    /* ★OSS系モデルのトグル（2026-08-09 ツキ指示「初期は閉じて、クリックで見れるように。
+       ニケ鯖メンバーはOSSめっちゃ使うからね」）。開設前トグルと同じ開閉式 */
+    if (ossCount) {
+      h += '<button class="chip atlaunch-toggle" data-toggle="oss"'
+        + ' title="DeepSeek・Qwen・GLM・Kimi・Gemma・Mistral・Llama などのオープンモデル">'
+        + '<span class="tg">＋</span> OSSモデル <b>' + ossCount + '</b></button>';
     }
     if (noDate) {
       h += '<button class="chip draftchip" data-month="__nodate__" title="一次情報で日付が確定できていないもの">'
@@ -940,6 +967,8 @@ footer .disclaimer{
         state.month = (m === '__all__') ? null : m;
       } else if (b.getAttribute('data-toggle') === 'atlaunch') {
         state.showAtLaunch = !state.showAtLaunch;
+      } else if (b.getAttribute('data-toggle') === 'oss') {
+        state.showOss = !state.showOss;
       }
       paint();
     });
