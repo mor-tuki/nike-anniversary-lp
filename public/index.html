@@ -764,7 +764,8 @@ footer .disclaimer{
        showOss: OSS系モデル（oss:true）を出すか。
        ★既定は false ＝ 初期表示はフロンティア中心で読みやすく、
          「ニケ鯖メンバーはOSSめっちゃ使う」ので開けばすぐ見える（2026-08-09 ツキ指示）。 */
-    var state = { cats: null, month: null, showAtLaunch: false, showOss: false };   // null = 絞らない
+    /* order: 'asc'=古い→新しい（既定・開設から読み下ろす）／'desc'=新しい→古い（2026-08-10 ツキ要望） */
+    var state = { cats: null, month: null, showAtLaunch: false, showOss: false, order: 'asc' };   // null = 絞らない
 
     var catCounts = {};
     entries.forEach(function (e) {
@@ -818,6 +819,13 @@ footer .disclaimer{
 
     function paint() {
       var vis = visible();
+      /* ★並び順の反転は「日付ありの区間」だけ。日付未確定(draft)は常に末尾に置く
+         ——先頭に来ると「最新のできごと」の顔をしてしまうため（2026-08-10） */
+      if (state.order === 'desc') {
+        var dated = vis.filter(function (e) { return !!e.date; });
+        var undated = vis.filter(function (e) { return !e.date; });
+        vis = dated.slice().reverse().concat(undated);
+      }
       if (!vis.length) {
         el.innerHTML = '<p class="tl-loading">この絞り込みに当てはまる項目はありません。</p>';
       } else {
@@ -857,6 +865,10 @@ footer .disclaimer{
         var v = b.getAttribute('data-month');
         b.classList.toggle('on', state.month ? state.month === v : v === '__all__');
       });
+      /* 並び順チップの選択状態 */
+      Array.prototype.forEach.call(document.querySelectorAll('[data-order]'), function (b) {
+        b.classList.toggle('on', state.order === b.getAttribute('data-order'));
+      });
       /* 開設時点トグル＝開いていたら on ＋ 記号を ＋/− で切り替える */
       var tgBtn = document.querySelector('[data-toggle="atlaunch"]');
       if (tgBtn) {
@@ -877,6 +889,11 @@ footer .disclaimer{
     var box = document.createElement('div');
     box.className = 'tl-filters';
     var h = '';
+    /* --- 並び順（2026-08-10 ツキ要望「新しい→古いに並び替えできるように」） --- */
+    h += '<div class="fl-row"><span class="fl-label">並び</span>';
+    h += '<button class="chip" data-order="asc" title="サーバー開設から現在へ読み下ろす">古い順</button>';
+    h += '<button class="chip" data-order="desc" title="いちばん新しいできごとが先頭に来る">新しい順</button>';
+    h += '</div>';
     h += '<div class="fl-row"><span class="fl-label">ジャンル</span>';
     h += '<button class="chip" data-cat="__all__">すべて <b>' + entries.length + '</b></button>';
     cats.forEach(function (c) {
@@ -965,6 +982,8 @@ footer .disclaimer{
       } else if (b.hasAttribute('data-month')) {
         var m = b.getAttribute('data-month');
         state.month = (m === '__all__') ? null : m;
+      } else if (b.hasAttribute('data-order')) {
+        state.order = b.getAttribute('data-order');
       } else if (b.getAttribute('data-toggle') === 'atlaunch') {
         state.showAtLaunch = !state.showAtLaunch;
       } else if (b.getAttribute('data-toggle') === 'oss') {
